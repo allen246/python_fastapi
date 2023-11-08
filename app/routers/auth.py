@@ -71,7 +71,7 @@ async def create_user(
     return new_user
 
 @router.post('/login')
-def login(payload: schemas.LoginUserSchema, response: Response, db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
+async def login(payload: schemas.LoginUserSchema, response: Response, db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
     # Check if the user exist
     user = db.query(models.User).filter(
         models.User.email == EmailStr(payload.email.lower())).first()
@@ -110,7 +110,7 @@ def login(payload: schemas.LoginUserSchema, response: Response, db: Session = De
 
 
 @router.get('/refresh')
-def refresh_token(response: Response, request: Request, Authorize: AuthJWT = Depends(), db: Session = Depends(get_db)):
+async def refresh_token(response: Response, request: Request, Authorize: AuthJWT = Depends(), db: Session = Depends(get_db)):
     try:
         print(Authorize._refresh_cookie_key)
         Authorize.jwt_refresh_token_required()
@@ -141,7 +141,7 @@ def refresh_token(response: Response, request: Request, Authorize: AuthJWT = Dep
 
 
 @router.get('/logout', status_code=status.HTTP_200_OK)
-def logout(response: Response, Authorize: AuthJWT = Depends(), user_id: str = Depends(oauth2.require_user)):
+async def logout(response: Response, Authorize: AuthJWT = Depends(), user_id: str = Depends(oauth2.require_user)):
     Authorize.unset_jwt_cookies()
     response.set_cookie('logged_in', '', -1)
 

@@ -23,3 +23,6 @@ Clone the repository:
    cd python_fastapi
    docker-compose up
 
+## Mauval
+
+Go to http://0.0.0.0:8000/docs to list all Endpoints

@@ -18,7 +18,15 @@ This README provides instructions on setting up and running the application.
 ## Setup
 
 Clone the repository:
-   ```bash
    git clone https://github.com/allen246/python_fastapi.git
    cd python_fastapi
    docker-compose up
+
+## To get started
+
+Open your browser
+
+   Open http://0.0.0.0:8000/docs
+   Register a new user
+   Login in with that credentials and it will create a JWT token which will be saved on your cookies
+   

@@ -22,7 +22,5 @@ Clone the repository:
    git clone https://github.com/allen246/python_fastapi.git
    cd python_fastapi
    docker-compose up
+   Go to http://0.0.0.0:8000/docs to list all Endpoints
 
-## Mauval
-
-Go to http://0.0.0.0:8000/docs to list all Endpoints
